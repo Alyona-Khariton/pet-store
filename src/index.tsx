@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { ConfigProvider } from 'antd';
+import './app/index.css';
+import App from './app';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from './shared/auth/context/AuthProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <ConfigProvider
+        form={{ requiredMark: false, scrollToFirstError: true }}
+      >
+        <App />
+      </ConfigProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
 
