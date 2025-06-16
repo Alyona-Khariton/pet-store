@@ -5,5 +5,8 @@
     "passwordLbl": "Password",
     "submitBtn": "Enter"
   },
-  "welcome": "Добро пожаловать в наше приложение"
+  "homePage": {
+    "title": "Welcome!",
+    "description": "Select a module"
+  }
 }

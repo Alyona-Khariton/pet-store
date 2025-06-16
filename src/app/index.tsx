@@ -1,19 +1,18 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from '../shared/auth/ui/Login';
-import ProtectedRoute from "./routes/ProtectedRoute";
-
-const Home = () => <h1>Главная страница</h1>;
+import ProtectedRoute from './routes/ProtectedRoute';
+import MasterPage from './MasterPage/MasterPage';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route
-          path="/"
+          path="*"
           element={
             <ProtectedRoute>
-              <Home />
+              <MasterPage />
             </ProtectedRoute>
           }
         />
