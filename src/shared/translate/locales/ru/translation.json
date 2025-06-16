@@ -1,0 +1,9 @@
+{
+  "loginPage": {
+    "title": "Вход",
+    "usernameLbl": "Логин",
+    "passwordLbl": "Пароль",
+    "submitBtn": "Войти"
+  },
+  "welcome": "Добро пожаловать в наше приложение"
+}

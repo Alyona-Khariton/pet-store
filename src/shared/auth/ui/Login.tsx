@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Flex, Form, Input, Segmented, Typography } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthProvider';
 import { login } from '../api';
 import { LoginFields } from '../model';
@@ -9,8 +10,21 @@ import { LoginFields } from '../model';
 const { Title } = Typography;
 
 function Login() {
+  const { t, i18n } = useTranslation();
   const { authState, setAuthState } = useAuth();
-  const [lang, setLang] = useState<string>('En');
+  const [lang, setLang] = useState<string>();
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem('language') || 'en';
+    setLang(savedLang);
+  }, []);
+
+  useEffect(() => {
+    if (!lang) return;
+
+    i18n.changeLanguage(lang);
+    localStorage.setItem('language', lang);
+  }, [lang, i18n]);
 
   if (authState.isAuthenticated) {
     return <Navigate to="/" />;
@@ -29,6 +43,10 @@ function Login() {
     }
   };
 
+  const handleLanguageChange = (lang: string) => {
+    setLang(lang);
+  };
+
   return (
     <Flex justify="center" align="center" style={{ height: '100vh' }}>
       <Form
@@ -41,13 +59,26 @@ function Login() {
       >
         <Form.Item>
           <Flex justify="space-between">
-            <Title level={3} style={{ margin: '0px' }}>Log in</Title>
-            <Segmented options={['Ru', 'En']} value={lang} onChange={value => setLang(value)} />
+            <Title level={3} style={{ margin: '0px' }}>{t('loginPage.title')}</Title>
+            <Segmented
+              options={[
+                {
+                  label: 'Ru',
+                  value: 'ru',
+                },
+                {
+                  label: 'En',
+                  value: 'en',
+                },
+              ]}
+              value={lang}
+              onChange={handleLanguageChange} 
+            />
           </Flex>
         </Form.Item>
 
         <Form.Item
-          label="Username"
+          label={t('loginPage.usernameLbl')}
           name="username"
           rules={[
             { required: true },
@@ -60,7 +91,7 @@ function Login() {
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label={t('loginPage.passwordLbl')}
           name="password"
           rules={[
             { required: true },
@@ -70,7 +101,7 @@ function Login() {
         </Form.Item>
 
         <Form.Item>
-          <Button htmlType="submit" type="primary" style={{ width: '100%' }}>Enter</Button>
+          <Button htmlType="submit" type="primary" style={{ width: '100%' }}>{t('loginPage.submitBtn')}</Button>
         </Form.Item>
       </Form>
     </Flex>

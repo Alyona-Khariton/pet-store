@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ConfigProvider } from 'antd';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './shared/translate/i18n';
 import './app/index.css';
 import App from './app';
 import reportWebVitals from './reportWebVitals';
@@ -11,13 +13,15 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ConfigProvider
-        form={{ requiredMark: false, scrollToFirstError: true }}
-      >
-        <App />
-      </ConfigProvider>
-    </AuthProvider>
+    <I18nextProvider i18n={i18n}>
+      <AuthProvider>
+        <ConfigProvider
+          form={{ requiredMark: false, scrollToFirstError: true }}
+        >
+          <App />
+        </ConfigProvider>
+      </AuthProvider>
+    </I18nextProvider>
   </React.StrictMode>
 );
 
