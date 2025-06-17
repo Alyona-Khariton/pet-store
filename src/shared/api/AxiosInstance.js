@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ENDPOINT = 'https://petstore.swagger.io/v2/';
+const ENDPOINT = 'https://petstore3.swagger.io/api/v3/';
 
 const axiosInstance = axios.create({
   baseURL: ENDPOINT,

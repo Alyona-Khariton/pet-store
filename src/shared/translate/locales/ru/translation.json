@@ -8,5 +8,13 @@
   "homePage": {
     "title": "Добро пожаловать!",
     "description": "Выберите модуль"
+  },
+  "petList": {
+    "title": "Список питомцев",
+    "segmentedLabel": {
+      "available": "Доступный",
+      "pending": "В ожидании",
+      "sold": "Проданный"
+    }
   }
 }

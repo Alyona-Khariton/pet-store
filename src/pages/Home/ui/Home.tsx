@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Layout, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
-import Styles from '../shared/Layouts/styles';
+import Styles from '@shared/Layouts/styles';
 
 const { Paragraph, Title } = Typography;
 

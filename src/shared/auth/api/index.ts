@@ -1,5 +1,5 @@
-import axios from '../../api/AxiosInstance';
-import { LoginFields } from '../model';
+import axios from '@shared/api/AxiosInstance';
+import { LoginFields } from '@shared/auth/model';
 
 export const login = async ({ username, password }: LoginFields) => {
   const searchParams = new URLSearchParams();

@@ -12,17 +12,15 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <I18nextProvider i18n={i18n}>
-      <AuthProvider>
-        <ConfigProvider
-          form={{ requiredMark: false, scrollToFirstError: true }}
-        >
-          <App />
-        </ConfigProvider>
-      </AuthProvider>
-    </I18nextProvider>
-  </React.StrictMode>
+  <I18nextProvider i18n={i18n}>
+    <AuthProvider>
+      <ConfigProvider
+        form={{ requiredMark: false, scrollToFirstError: true }}
+      >
+        <App />
+      </ConfigProvider>
+    </AuthProvider>
+  </I18nextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

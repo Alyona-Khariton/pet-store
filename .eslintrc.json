@@ -1,24 +1,98 @@
 {
-    "env": {
-      "browser": true,
-      "es2021": true 
+  "env": {
+    "browser": true,
+    "es2021": true 
+  },
+  "extends": ["airbnb"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": ["airbnb"],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 11, // версия стандарта JavaScript. Последний 12 (2021).
-      "sourceType": "module" // Позволяет использовать import/export
-    },
-    // Здесь мы подключаем используемые плагины.
-    "plugins": [
-      "react"
-    ],
-    /* Правила для отслеживания линтером. Если пресеты покрывают не все ситуации, 
-    вы можете прописать нужные правила вручную. */
-    "rules": {
-      "react/prop-types": 0 // Отключаем правило проверки передаваемых типов.
+    "ecmaVersion": 11, // версия стандарта JavaScript. Последний 12 (2021).
+    "sourceType": "module" // Позволяет использовать import/export
+  },
+  // Здесь мы подключаем используемые плагины.
+  "plugins": [
+    "react"
+  ],
+  "overrides": [
+    {
+      "files": ["*.tsx", "*.ts"],
+      "rules": {
+        "no-unused-expressions": 0,
+        "no-undef": 0,
+        "max-len": 0,
+        "jsx-a11y/anchor-is-valid": 0,
+        "no-restricted-globals": 0,
+        "no-labels": 0
+      }
     }
+  ],
+  /* Правила для отслеживания линтером. Если пресеты покрывают не все ситуации, 
+  вы можете прописать нужные правила вручную. */
+  "rules": {
+    "react/prop-types": 0, // Отключаем правило проверки передаваемых типов.
+    "comma-dangle": ["error", "only-multiline"], // Требует запятую в конце последнего элемента в многострочных объектах и массивах.
+    "arrow-spacing": "error", // Требует пробелы до и после стрелки в стрелочных функциях.
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "prefer-template": "warn", // Рекомендует использование шаблонных строк вместо конкатенации строк.
+    "operator-linebreak": [
+      // Правило для управления переносами строк вокруг операторов
+      "error", // Уровень ошибки
+      "before", // Разрывать строки перед операторами
+      {
+        "overrides": {
+          // Переопределения для определённых операторов
+          "?": "before", // Перенос строки перед оператором `?`
+          ":": "before" // Перенос строки перед оператором `:`
+        }
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ], // Создает ошибку, если в коде есть неиспользуемые переменные, кроме параметров функций.
+
+    "lines-between-class-members": ["error", "always"], // Требует пустую строку между методами и свойствами в классах.
+    "import/no-unresolved": 0, // Отключает правило, которое проверяет, что все импорты могут быть разрешены (модули должны существовать).
+    "import/prefer-default-export": 0, // Отключает правило, требующее использовать экспорт по умолчанию, если экспортируется только один элемент.
+    "import/extensions": [
+      1,
+      "ignorePackages",
+      {
+        "jsx": "always",
+        "js": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ], // Требует указывать расширения для файлов jsx, но не требует их для js, ts и tsx.
+    "keyword-spacing": [
+      "error",
+      {
+        "after": true,
+        "before": true
+      }
+    ], // Требует пробелы перед и после ключевых слов (например, if, else, return).
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ], // Требует, чтобы переносы в фигурных скобках были консистентными, т.е. или все элементы в одной строке, или каждый на новой строке.
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".ts", ".tsx"]
+      }
+    ] // Разрешает использование JSX в файлах с расширением .js и .jsx.
+  }
 }

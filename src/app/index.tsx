@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from '../shared/auth/ui/Login';
+import Login from '@shared/auth/ui/Login';
 import ProtectedRoute from './routes/ProtectedRoute';
 import MasterPage from './MasterPage/MasterPage';
 

@@ -8,5 +8,13 @@
   "homePage": {
     "title": "Welcome!",
     "description": "Select a module"
+  },
+  "petList": {
+    "title": "Pet list",
+    "segmentedLabel": {
+      "available": "Available",
+      "pending": "Pending",
+      "sold": "Sold"
+    }
   }
 }
